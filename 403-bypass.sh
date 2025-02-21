@@ -48,1028 +48,1470 @@ function URL_Encode_Bypass(){
 	echo -e ${cyan}"[+] URL Encode Bypass "${end}
 	echo -e ${blue}"----------------------"${end}
 	
-
-echo -n "Payload [payload ]:" 
-
-code=$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}',' Length : '"%{size_download}
-" "${target}payload"       -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36") 
-
-payload=$(printf "╭$(printf '%.0s─' $(seq "$((${termwidth} - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}payload' -H 'User-Agent: Mozilla/5.0'\n${end}╰$(printf '%.0s─' $(seq "$((`tput cols` - 2))"))╯\n") 
-
-# 10,000 payloads
-payload_list=(
-	"Handling_QPUpload/"
-"Mgmt_QPControl/"
-"QPSystemMonitoring/"
-"QPService_Automation/"
-"QstnPaper-BatchProcessor/"
-"QPaperBulkUpload/"
-"QPCloud_Admin/"
-"Manager-QPBData/"
-"QPBulkAccessControl/"
-"Control_QPAdmin/"
-"Uploader-ExamPaper/"
-"QPBFileAccessControl/"
-"Admin-QPFile/"
-"QPB_FileUpload/"
-"Suite-QPBData/"
-"QPDatabaseFileProcessor/"
-"QPHandler-Service/"
-"BatchUpload_QPaperDoc/"
-"QPUpload_Automation/"
-"UploadService-QPaper/"
-"QstnPaperHandler/"
-"QPFileAutomation/"
-"QPWorkflow_BatchUpload/"
-"QPBData_Processing/"
-"QPMonitorCloudSync/"
-"FileProcessor-QPMonitor/"
-"QPUpload_Service/"
-"QPService_DataOps/"
-"AutomationSystem-QPaperDoc/"
-"ProcessingSystem_QPMaster/"
-"QPBulk-DataOps/"
-"QPSystem-BulkUpload/"
-"QPWorkflow_Sync/"
-"QPProcessingWorkflow/"
-"SyncQPAdmin/"
-"ProcessingQPUploader/"
-"Workflow_QPSystem/"
-"ProcessingSuite_QPB/"
-"QPBDataFileUpload/"
-"Module-QPWorkflow/"
-"MonitoringTool_QPBData/"
-"QPB_DataOps/"
-"QPUploaderTool/"
-"BatchUpload_QPUpload/"
-"QPUploader-DatabaseManager/"
-"Uploader_QPBatch/"
-"QPaper_System/"
-"QPBData_Handler/"
-"Handling_QsnPaper/"
-"QPB_Portal/"
-"QPProcessing_ProcessingSuite/"
-"Processing_QPMonitor/"
-"MassUploadQPaperDoc/"
-"DataSync_QPDatabase/"
-"CloudSyncQPB/"
-"Service_Q_P/"
-"Automation-QPBatch/"
-"AutomationSystemQ_P/"
-"Mgmt-QPBatch/"
-"Transfer-QPUpload/"
-"QstnPaper_Platform/"
-"QPBData-Mgmt/"
-"AutomationSystem-QPUploader/"
-"Management_QPProcessing/"
-"DataPipelineQPCloud/"
-"QPFile_ProcessingSuite/"
-"QPControl_Portal/"
-"QPBFile_Management/"
-"QPWorkflow_DataProcessing/"
-"Workflow-QPSystem/"
-"QPaper_HandlingModule/"
-"QPWorkflow-AccessControl/"
-"QPSystem_Manager/"
-"QPMaster-Handling/"
-"System-QPMgmt/"
-"HandlerQPMgmt/"
-"QPSystem-Tool/"
-"Portal-QPMaster/"
-"MassUploadQPBData/"
-"ExamPaper_Handling/"
-"ExamPaper_Ops/"
-"QPBatchService/"
-"DataOpsQ_P/"
-"QPUploader_CloudSync/"
-"Service-QPUpload/"
-"Transfer_QPFile/"
-"QPAdminMonitoring/"
-"QPBFileDataPipeline/"
-"QPHandler_AccessControl/"
-"QP_Uploader/"
-"DataSync_QPUpload/"
-"Ops-QPB/"
-"QPCloud_BatchUpload/"
-"QPAutoDataOps/"
-"AccessControlQPaper/"
-"Dashboard_QPSystem/"
-"QstnPaper_Processing/"
-"QPBatchProcessing/"
-"QPSystem-Manager/"
-"DataUpload_QPMaster/"
-"BatchProcessor-QP/"
-"QPDatabaseTransfer/"
-"QPControl-HandlingModule/"
-"QPBFilePanel/"
-"AccessControlQPB/"
-"Upload-QPHandler/"
-"DataUpload-QPBatch/"
-"PlatformQPUpload/"
-"Module-QPUpload/"
-"DataUploadQstnPaper/"
-"QPB_Mgmt/"
-"QPBMassUpload/"
-"Handling-QstnPaper/"
-"QPBulk-Workflow/"
-"QPUploader_Upload/"
-"QPAuto_Handling/"
-"QPAdmin_Monitoring/"
-"Mgmt-QPService/"
-"AdminQPCloud/"
-"DataSync-QuestionPaper/"
-"QPaperDoc_System/"
-"AutomationQPCloud/"
-"HandlingModuleQP/"
-"QPHandler-BatchProcessor/"
-"QPAdminMassUpload/"
-"QPMaster-Ops/"
-"Workflow-QPManager/"
-"Q_P_CloudSync/"
-"QPaper-Control/"
-"Handling-ExamPaper/"
-"Processing_QPHandler/"
-"DataSync-QPBFile/"
-"QPWorkflow_Mgmt/"
-"QPMonitor_AutomationSystem/"
-"CloudSyncQstnPaper/"
-"QPAuto_Dashboard/"
-"QuestionPaperSync/"
-"MgmtQPMonitor/"
-"Admin-QPaperDoc/"
-"ProcessingSystem-QPaperDoc/"
-"ControlQPService/"
-"QPaper-ProcessingSystem/"
-"QPService-UploadService/"
-"Suite-QPAuto/"
-"QPService-DatabaseManager/"
-"MonitoringTool-QPHandler/"
-"QPMaster_BatchProcessor/"
-"ToolQuestionPaper/"
-"ProcessingSystemQPaperDoc/"
-"QPaperDocPanel/"
-"Mgmt-QPB/"
-"AutomationQPManager/"
-"MassUpload_QPUpload/"
-"Dashboard_QPUpload/"
-"QPDatabase_Admin/"
-"QPBData-AccessControl/"
-"Portal-QPManager/"
-"QPBulkSuite/"
-"QPWorkflow-Transfer/"
-"QPMonitorAutomation/"
-"CloudSyncQPBulk/"
-"QPaper_Handling/"
-"DataOps-QPUpload/"
-"QP-Sync/"
-"Sync_ExamPaper/"
-"Ops_QPProcessing/"
-"SystemQPDatabase/"
-"MonitoringTool-QPaper/"
-"SystemQPCloud/"
-"Upload-QPMgmt/"
-"QPUploader_HandlingModule/"
-"QPHandler-HandlingModule/"
-"Manager-QsnPaper/"
-"QPAdminHandlingModule/"
-"DataSync-TestPaper/"
-"QPBFile_FileProcessor/"
-"QPaperDocAutomationSystem/"
-"Platform-QPBulk/"
-"AccessControl-QPSystem/"
-"MassUploadQPaper/"
-"QPAutoUpload/"
-"QsnPaperDataUpload/"
-"SuiteQPMaster/"
-"QPBulkMonitoringTool/"
-"QPSystem_Suite/"
-"QuestionPaperDashboard/"
-"MonitoringTool_QPService/"
-"TransferQPBFile/"
-"WorkflowQPBData/"
-"QuestionPaperUploader/"
-"PlatformQPBData/"
-"QPManager-Handler/"
-"BatchProcessorQPService/"
-"QPUpload-Processing/"
-"ManagerQ_P/"
-"CloudSync_QPWorkflow/"
-"DataProcessing_QPBatch/"
-"Module_QPB/"
-"Admin_QP/"
-"Ops_QPAuto/"
-"QPSystemAdmin/"
-"TestPaper_ProcessingSystem/"
-"Monitoring_QsnPaper/"
-"QPUploader-Uploader/"
-"QPUploader_Handler/"
-"BatchProcessor-QPManager/"
-"Ops_QPB/"
-"BulkUploadQPWorkflow/"
-"ProcessingSuiteQP/"
-"QPUploader-Processing/"
-"QPProcessingManagement/"
-"QuestionPaper-Admin/"
-"QPBatch_AutoUpload/"
-"MonitoringTool-QPUploader/"
-"Management_QPaperDoc/"
-"MassUpload-QPFile/"
-"TestPaperAccessControl/"
-"QPService-Service/"
-"DataProcessing-QPAdmin/"
-"QPBDataAutomationSystem/"
-"QPDatabaseOps/"
-"QPDatabaseFileUpload/"
-"AutomationSystem-QPBatch/"
-"QuestionPaperHandlingModule/"
-"QPBData-Workflow/"
-"QPBFile-Portal/"
-"QPBFile-Uploader/"
-"QPUpload-Admin/"
-"QPUploader-ProcessingSystem/"
-"QPDatabase-FileUpload/"
-"QPMonitor-Sync/"
-"QPDatabase_Manager/"
-"QPControl-Control/"
-"QPAuto-Module/"
-"AutomationSystem_Q_P/"
-"FileProcessor_QPBFile/"
-"ServiceQP/"
-"DataPipelineQPControl/"
-"CloudSync_QPCloud/"
-"BatchProcessorQPSystem/"
-"ProcessingSuiteQPBFile/"
-"QPBDataAccessControl/"
-"QPMaster_Service/"
-"Uploader-QPWorkflow/"
-"CloudSync_QsnPaper/"
-"QPWorkflowFileProcessor/"
-"QPBatchMgmt/"
-"AdminQPControl/"
-"Platform_QstnPaper/"
-"Panel_TestPaper/"
-"QPControl_Admin/"
-"QPBulk-FileProcessor/"
-"DataProcessing-TestPaper/"
-"BatchProcessor_QPSystem/"
-"QPWorkflow-AutomationSystem/"
-"QPSystem-Admin/"
-"QPaperDoc_CloudSync/"
-"Admin_QPSystem/"
-"QPManager_DataUpload/"
-"Ops-QPAuto/"
-"SyncQPProcessing/"
-"FileProcessor-QPBatch/"
-"ModuleQPAuto/"
-"ProcessingSuite_QPMonitor/"
-"QPAuto_FileUpload/"
-"QsnPaperProcessing/"
-"FileUpload-QPService/"
-"DataProcessing_QPMaster/"
-"Sync-QPWorkflow/"
-"HandlingModuleQPaper/"
-"AutomationSystem-QPDatabase/"
-"QPWorkflow_Module/"
-"Sync_QPControl/"
-"DataUpload-QPWorkflow/"
-"QstnPaper_Suite/"
-"System-QPMonitor/"
-"QP-Processing/"
-"CloudSync_QPDatabase/"
-"QuestionPaper-Panel/"
-"QPBulk-Ops/"
-"QPControlDataUpload/"
-"Monitoring_QPHandler/"
-"BatchProcessor-QPMaster/"
-"QPDatabase-System/"
-"DataSync_QPHandler/"
-"ProcessingSuiteQPWorkflow/"
-"ExamPaper_DataPipeline/"
-"Service_QPFile/"
-"Workflow-QPBulk/"
-"QPB_FileProcessor/"
-"QPSystem_DatabaseManager/"
-"DashboardQPControl/"
-"Monitoring_ExamPaper/"
-"QPBData_ProcessingSuite/"
-"Handling_QPDatabase/"
-"QPMgmt-Workflow/"
-"HandlingModule-QuestionPaper/"
-"QPBulkTool/"
-"QPMaster_DataProcessing/"
-"DataUploadQPBData/"
-"SuiteQPMonitor/"
-"QPBulk_Tool/"
-"QPSystem-Upload/"
-"ExamPaper_UploadService/"
-"TestPaper_Handler/"
-"QPaperDoc_MonitoringTool/"
-"MassUploadQPUpload/"
-"QsnPaper-CloudSync/"
-"Dashboard_QPAdmin/"
-"ProcessingSystem-QstnPaper/"
-"UploadServiceQPBatch/"
-"QPaperDocProcessing/"
-"Monitoring-QPaperDoc/"
-"Control_QPSystem/"
-"QPaper-MassUpload/"
-"ProcessingSystem_QP/"
-"BatchProcessor_QstnPaper/"
-"AutomationQPBulk/"
-"BatchProcessor-QPaper/"
-"BulkUploadQPManager/"
-"QstnPaper_CloudSync/"
-"Suite-QPMgmt/"
-"HandlingModule_QPMaster/"
-"QPProcessing_Uploader/"
-"Uploader-QPAuto/"
-"HandlingModule_QPBFile/"
-"Q_P_System/"
-"QuestionPaper-System/"
-"QPUploadProcessing/"
-"TestPaper_FileProcessor/"
-"UploadService_QPProcessing/"
-"Monitoring-QuestionPaper/"
-"QPB_Monitoring/"
-"QPManager-DatabaseManager/"
-"ModuleQPDatabase/"
-"Ops_QPAdmin/"
-"TestPaperProcessingSystem/"
-"CloudSync-QPBFile/"
-"BatchProcessor_QPWorkflow/"
-"QPService_DataPipeline/"
-"DataSync-QPBatch/"
-"DataPipeline-QPUpload/"
-"DashboardQPCloud/"
-"QPSystemDataPipeline/"
-"Management_QPMonitor/"
-"Transfer-QPWorkflow/"
-"Ops-QPMgmt/"
-"QPBHandler/"
-"QPDatabase_Portal/"
-"DataOps_QPB/"
-"Upload_QPBatch/"
-"BatchProcessor-QPUploader/"
-"QPAutoBatchUpload/"
-"QPService_AutoUpload/"
-"TestPaper_Management/"
-"QPMonitor_DataOps/"
-"QPControl-Tool/"
-"Q_PBulkUpload/"
-"AutomationSystemQP/"
-"DataUpload_QPManager/"
-"ManagementQuestionPaper/"
-"DataOps-QPCloud/"
-"DataProcessingQstnPaper/"
-"TestPaperSuite/"
-"Upload_QPaper/"
-"DataUploadQPSystem/"
-"QPUploadSuite/"
-"QPManager_BatchUpload/"
-"QPMonitor_AutoUpload/"
-"DashboardQPMonitor/"
-"QPMonitorAutoUpload/"
-"WorkflowQPaperDoc/"
-"AutoUpload-QstnPaper/"
-"QPProcessingMassUpload/"
-"QPManagerMonitoringTool/"
-"QPBatchUploadService/"
-"Service_QPHandler/"
-"BatchUpload-QPB/"
-"QPBatchOps/"
-"QPMonitor_Mgmt/"
-"QPMasterMgmt/"
-"SuiteQPWorkflow/"
-"ProcessingSuite-QPAuto/"
-"FileUpload_QPControl/"
-"QPDatabaseDataOps/"
-"BatchUpload-QPManager/"
-"QPUpload-BatchProcessor/"
-"QPWorkflow-Manager/"
-"DataSync_Q_P/"
-"QPBDataUpload/"
-"MonitoringTool-ExamPaper/"
-"Management_QPaper/"
-"QPAutoUploadService/"
-"QPBatch-Panel/"
-"Q_P-BatchUpload/"
-"QPBulk_Mgmt/"
-"MonitoringToolQsnPaper/"
-"Monitoring_QPMgmt/"
-"UploadService_QPAdmin/"
-"QPService-Control/"
-"DataPipeline-QuestionPaper/"
-"QPBulkDataSync/"
-"QPUploader_FileProcessor/"
-"Module_QPService/"
-"QPControl-Automation/"
-"DataOps_QPControl/"
-"QPManagerAutomation/"
-"QPAutoDataPipeline/"
-"ModuleQPHandler/"
-"AutoUploadQPaper/"
-"Sync_QPBatch/"
-"Dashboard_QPAuto/"
-"QPService_DataSync/"
-"QPUploader-Monitoring/"
-"QPControl-UploadService/"
-"ServiceQPSystem/"
-"QstnPaperCloudSync/"
-"QPUpload_Suite/"
-"DataSync-QPProcessing/"
-"QPB-AutoUpload/"
-"AdminQPProcessing/"
-"ExamPaper_BulkUpload/"
-"QPFile_Monitoring/"
-"BatchProcessor_QPAdmin/"
-"QPBulk_Control/"
-"HandlingQuestionPaper/"
-"DataPipeline_QPHandler/"
-"QPAdminFileUpload/"
-"FileUpload_QPFile/"
-"DataOps-QPService/"
-"QPBData-Platform/"
-"Upload_QuestionPaper/"
-"ExamPaper_DataSync/"
-"MgmtQPFile/"
-"PanelQPBFile/"
-"ModuleQPSystem/"
-"QPBFile_BulkUpload/"
-"DataProcessingExamPaper/"
-"UploadService-QPBFile/"
-"Management_QPDatabase/"
-"QPBatch_Workflow/"
-"QsnPaper-FileUpload/"
-"AutomationQPService/"
-"BatchUploadQPMonitor/"
-"QPWorkflow-MonitoringTool/"
-"Mgmt_QPUpload/"
-"DatabaseManagerExamPaper/"
-"QPMonitor-HandlingModule/"
-"Panel_QPService/"
-"QPCloudPlatform/"
-"QPMaster_Ops/"
-"Management-QPControl/"
-"MassUpload_ExamPaper/"
-"UploaderQPFile/"
-"Handling_QPAdmin/"
-"AutoUpload-QPMaster/"
-"QPDatabase_ProcessingSystem/"
-"QPaperDoc_DataPipeline/"
-"QPUploadMassUpload/"
-"Uploader_QuestionPaper/"
-"QPSystemFileUpload/"
-"QPaperDocService/"
-"QsnPaper-Automation/"
-"QPWorkflowTool/"
-"Tool_QPService/"
-"QPDatabase_Service/"
-"QsnPaperTransfer/"
-"QPMaster-CloudSync/"
-"QPDatabase_UploadService/"
-"QPProcessing_Sync/"
-"FileProcessorQPDatabase/"
-"QPMaster_FileUpload/"
-"QPaperMonitoring/"
-"QPAdmin-Upload/"
-"TestPaper_AccessControl/"
-"Platform-QPService/"
-"QPAdmin_Upload/"
-"System-QPAdmin/"
-"Sync_QPMonitor/"
-"DatabaseManager-QPaperDoc/"
-"QPBFile_Admin/"
-"QstnPaper-Module/"
-"Management-ExamPaper/"
-"Service-QPBulk/"
-"ProcessingSuite_QPBulk/"
-"SyncQPDatabase/"
-"Panel_QPBulk/"
-"QPAutoProcessing/"
-"SyncQPMgmt/"
-"QPSystem_Module/"
-"Ops_QstnPaper/"
-"QPaperDocMassUpload/"
-"QPDatabaseManager/"
-"QstnPaper_Handler/"
-"AutomationSystem-QsnPaper/"
-"ModuleQPBData/"
-"Processing_QPaper/"
-"Dashboard_QPFile/"
-"MassUpload-QPAdmin/"
-"DataOpsQPHandler/"
-"MassUploadQPFile/"
-"Control_QPService/"
-"DatabaseManager_QPService/"
-"QPUpload_Transfer/"
-"QPMaster-Mgmt/"
-"QstnPaper-AutomationSystem/"
-"Control-QPService/"
-"QP-Manager/"
-"ExamPaperBatchUpload/"
-"ManagerQsnPaper/"
-"QPBulk-Control/"
-"AutoUpload_QPHandler/"
-"BatchProcessorQPFile/"
-"QPAuto_Control/"
-"AutomationSystem-QPSystem/"
-"QPMonitor_Admin/"
-"QsnPaper-DataPipeline/"
-"QsnPaper-ProcessingSystem/"
-"QuestionPaper_ProcessingSuite/"
-"QPBatch_AccessControl/"
-"QPBulk_DataPipeline/"
-"Admin-QPBatch/"
-"QstnPaper_System/"
-"Uploader_QPAdmin/"
-"QPaperDoc-Dashboard/"
-"TestPaper_Suite/"
-"QPAdminDataOps/"
-"ToolQPCloud/"
-"QPMasterControl/"
-"HandlingModuleQPProcessing/"
-"Suite-QPFile/"
-"UploadServiceQPService/"
-"QPUploader-AccessControl/"
-"Uploader-QPUploader/"
-"Uploader-QPBulk/"
-"QPaper_Automation/"
-"QPMonitor-MassUpload/"
-"Sync-Q_P/"
-"Transfer_QPMonitor/"
-"UploadQPBulk/"
-"DataProcessing_TestPaper/"
-"Uploader-Q_P/"
-"QPControlBatchUpload/"
-"QPB-BulkUpload/"
-"Workflow-QPCloud/"
-"QPBFileMonitoringTool/"
-"SystemQPAuto/"
-"QPWorkflow-DataUpload/"
-"HandlingQPAdmin/"
-"HandlerQPCloud/"
-"QPService_Dashboard/"
-"ManagementQPMgmt/"
-"QsnPaper-Portal/"
-"QPBulkWorkflow/"
-"QPaperDoc_Ops/"
-"FileUpload_QP/"
-"QsnPaper-Control/"
-"MgmtQuestionPaper/"
-"QPBDatabaseManager/"
-"DashboardQPBFile/"
-"PortalQPBulk/"
-"QPManager-Ops/"
-"Manager-QPMgmt/"
-"QPSystemService/"
-"QPSystem-System/"
-"FileUploadQPBData/"
-"QPSystem_BulkUpload/"
-"Control_QsnPaper/"
-"QPaper_Manager/"
-"SuiteQP/"
-"DataUpload-QPMonitor/"
-"WorkflowQPAdmin/"
-"QstnPaper_Ops/"
-"QPBatch_BulkUpload/"
-"Panel_QPCloud/"
-"OpsQPBData/"
-"Control-QPFile/"
-"QP_Control/"
-"Platform_QPHandler/"
-"SuiteQPBulk/"
-"QPDatabase_FileProcessor/"
-"QPWorkflow_MonitoringTool/"
-"DataOps-QPBulk/"
-"QPBatchUploader/"
-"DataPipeline_QPUploader/"
-"AutoUpload-QPUploader/"
-"AccessControlQPService/"
-"ProcessingSuite-ExamPaper/"
-"Manager-QPUploader/"
-"MassUpload-QstnPaper/"
-"QstnPaper-Panel/"
-"QPService-BatchUpload/"
-"Portal-QPHandler/"
-"ControlQPB/"
-"QPaper_Tool/"
-"AdminQPHandler/"
-"QPFile_DataPipeline/"
-"QPBatchSystem/"
-"QPService-DataOps/"
-"QPManagerHandling/"
-"QPBData_BatchProcessor/"
-"Admin_QstnPaper/"
-"QPBDataPlatform/"
-"DataOps_QPUploader/"
-"QPAutoAccessControl/"
-"QPaperDoc_MassUpload/"
-"HandlingModule_QPAdmin/"
-"Workflow-QstnPaper/"
-"Manager_QstnPaper/"
-"AutomationSystem_QPAuto/"
-"QPAuto-AccessControl/"
-"ExamPaper-Dashboard/"
-"ManagementQPBFile/"
-"QPCloud-Manager/"
-"DataUpload-QPSystem/"
-"Monitoring_QPControl/"
-"HandlerQPService/"
-"QPService_BulkUpload/"
-"QPAdmin_Mgmt/"
-"BatchProcessor-ExamPaper/"
-"MonitoringTool-QPAuto/"
-"QPaper_Portal/"
-"Mgmt-QPBFile/"
-"QPManager_DataSync/"
-"Processing-QPMgmt/"
-"QPBulk-BatchProcessor/"
-"DatabaseManagerQPManager/"
-"Control_QPCloud/"
-"SystemQPService/"
-"QPMonitorMassUpload/"
-"Sync-QPSystem/"
-"QPCloudTool/"
-"QPManager-Panel/"
-"Management_QuestionPaper/"
-"FileProcessor_QPAuto/"
-"QPControl_Workflow/"
-"FileProcessor-QsnPaper/"
-"QPUpload_FileProcessor/"
-"Q_PProcessing/"
-"QPAdmin-Tool/"
-"Portal_QPHandler/"
-"AutomationTestPaper/"
-"QPControlHandling/"
-"Sync-QPCloud/"
-"Automation-QPHandler/"
-"TestPaperFileUpload/"
-"Handling-QPMgmt/"
-"Workflow_QPMaster/"
-"MassUpload_QsnPaper/"
-"QstnPaper-Upload/"
-"HandlingQPMgmt/"
-"QPBAutoUpload/"
-"QPMaster-Processing/"
-"Admin-QPB/"
-"Upload_QPMonitor/"
-"QPManagerAutomationSystem/"
-"Processing-QP/"
-"QPB_Transfer/"
-"Sync-QPBatch/"
-"Ops-QPFile/"
-"QPAdmin-Handler/"
-"QP_Automation/"
-"MassUploadQPControl/"
-"Control_QPMonitor/"
-"BulkUpload_QstnPaper/"
-"DataProcessing-QPUploader/"
-"DataPipelineQP/"
-"Workflow_QPBFile/"
-"QPBFileBulkUpload/"
-"QPaper_BulkUpload/"
-"WorkflowTestPaper/"
-"QPaperDoc-UploadService/"
-"QPDataOps/"
-"DataPipelineQPAdmin/"
-"MonitoringQstnPaper/"
-"QsnPaper-BatchProcessor/"
-"Tool_QuestionPaper/"
-"MassUpload-QPaperDoc/"
-"DatabaseManager-QPBFile/"
-"Panel-QPUpload/"
-"System-QsnPaper/"
-"QPHandler_Handler/"
-"QPBulk_Processing/"
-"TestPaper_Admin/"
-"QPProcessingTool/"
-"Q_P-Panel/"
-"DataUpload-QPDatabase/"
-"TestPaper-Handler/"
-"QPBData-UploadService/"
-"Manager_QPWorkflow/"
-"MassUpload-QPUploader/"
-"AdminQPB/"
-"Mgmt_QPSystem/"
-"DataOps_QPProcessing/"
-"QPaperDocMonitoringTool/"
-"AutoUploadQPBData/"
-"DataOps-TestPaper/"
-"QPAuto-DataUpload/"
-"Uploader-QstnPaper/"
-"QPBFileWorkflow/"
-"QPMgmt-Monitoring/"
-"QPMgmt_CloudSync/"
-"Admin_QPMaster/"
-"Sync_QPAuto/"
-"Admin-QPAdmin/"
-"HandlingQstnPaper/"
-"ProcessingSuite-QPB/"
-"TransferQPBulk/"
-"MassUpload-QPaper/"
-"QPCloud_Workflow/"
-"QPMonitor_DataProcessing/"
-"MassUpload-QPBData/"
-"HandlingModule-QPUpload/"
-"AccessControl-TestPaper/"
-"AutomationSystem_QPManager/"
-"Ops-QPManager/"
-"BulkUploadQPCloud/"
-"QP_Tool/"
-"QPMgmt_Control/"
-"MonitoringTool_QPWorkflow/"
-"AutoUploadQPCloud/"
-"ToolQPaperDoc/"
-"Tool-QPFile/"
-"QPMonitor-System/"
-"QPWorkflow-MassUpload/"
-"QPUpload-FileUpload/"
-"ExamPaperMonitoring/"
-"Management-QPHandler/"
-"QPMasterMonitoringTool/"
-"FileUploadQPBFile/"
-"Handling-QPBData/"
-"Q_PMgmt/"
-"OpsQPSystem/"
-"QPSystem/"
-"AccessControl-QPaper/"
-"QPaperService/"
-"QPAdminDataProcessing/"
-"MgmtQPSystem/"
-"QPBFile_Sync/"
-"Platform-QPDatabase/"
-"Transfer-QPMaster/"
-"QPMgmt-DataOps/"
-"QPProcessing-FileUpload/"
-"ProcessingSystemQPaper/"
-"QPServiceManager/"
-"BatchUpload_QPDatabase/"
-"MonitoringQPAuto/"
-"QPBulk_Handler/"
-"Q_P-DataPipeline/"
-"QPCloud_BatchProcessor/"
-"ExamPaper_FileUpload/"
-"ManagerQstnPaper/"
-"FileUploadQ_P/"
-"QPMonitorPlatform/"
-"MassUploadQPUploader/"
-"Module_QPAdmin/"
-"Handler-QstnPaper/"
-"DataPipeline_QPWorkflow/"
-"ControlQPCloud/"
-"QPCloudUploadService/"
-"QPSystemBatchUpload/"
-"AutomationQPAuto/"
-"QPFile_Manager/"
-"DataUpload_QPDatabase/"
-"DataUpload_QPHandler/"
-"Monitoring_QPUploader/"
-"QPAdmin_ProcessingSystem/"
-"QPAdmin-Portal/"
-"ExamPaper-Suite/"
-"QPMgmt_HandlingModule/"
-"QPManagerHandlingModule/"
-"MonitoringTool-QPBData/"
-"MonitoringTool_QPaperDoc/"
-"TestPaper_AutoUpload/"
-"ProcessingSystemQPBData/"
-"CloudSync_QPMgmt/"
-"QPBBulkUpload/"
-"QPMgmt_MonitoringTool/"
-"QPDatabaseMonitoring/"
-"QPDatabase_Monitoring/"
-"QPMgmt_Panel/"
-"Panel_QsnPaper/"
-"QP_Monitoring/"
-"QPaperDoc_Module/"
-"Sync_QPBFile/"
-"AccessControl-QP/"
-"MassUpload_QP/"
-"TestPaper-DataSync/"
-"QstnPaperBatchUpload/"
-"QPMaster_BatchUpload/"
-"QPaper-Mgmt/"
-"Panel-QPaper/"
-"QPWorkflowAccessControl/"
-"QPMaster-UploadService/"
-"QPManagerAccessControl/"
-"QPHandlingModule/"
-"QPaperDoc_UploadService/"
-"QuestionPaper-Tool/"
-"MassUpload_TestPaper/"
-"QPSystemFileProcessor/"
-"HandlingModule_Q_P/"
-"QPBatch_DataOps/"
-"Suite_QPHandler/"
-"QPaper_DataProcessing/"
-"HandlerQPWorkflow/"
-"QPHandler-Dashboard/"
-"QPAuto-FileProcessor/"
-"Q_P-DataProcessing/"
-"QuestionPaper-Manager/"
-"ManagerQPAuto/"
-"ProcessingSystemQPAuto/"
-"Automation_QPSystem/"
-"QPBData_HandlingModule/"
-"QPB_MassUpload/"
-"QPAutoDashboard/"
-"Mgmt_QPB/"
-"QPService_FileUpload/"
-"QPBulk_Manager/"
-"QsnPaper_CloudSync/"
-"QPDatabase-Suite/"
-"QstnPaper-AccessControl/"
-"Uploader-QP/"
-"QPB-AutomationSystem/"
-"CloudSync_QstnPaper/"
-"Monitoring_QPB/"
-"ManagerQPWorkflow/"
-"ProcessingSuite-QPCloud/"
-"BatchUploadQPB/"
-"QPUploadDataPipeline/"
-"QPBProcessingSuite/"
-"QPCloudPortal/"
-"Transfer-QPAdmin/"
-"QPaperDocProcessingSystem/"
-"AccessControlQPBulk/"
-"HandlerQPaper/"
-"QPAdminDataUpload/"
-"QPBulkMonitoring/"
-"ProcessingSystem_QPControl/"
-"ProcessingSystemQsnPaper/"
-"QPDataUpload/"
-"HandlerQP/"
-"QPHandler_Sync/"
-"QPBatch_Sync/"
-"HandlingQPaper/"
-"QsnPaper_Management/"
-"QPUploaderAutoUpload/"
-"QPMgmtControl/"
-"ProcessingQPBFile/"
-"QPDatabase_Ops/"
-"Module-QPBatch/"
-"QP_Service/"
-"HandlingTestPaper/"
-"ProcessingSuiteQPBData/"
-"Upload_QPMaster/"
-"Q_PModule/"
-"QPProcessing-DataOps/"
-"QPProcessing-Platform/"
-"QstnPaper-BatchUpload/"
-"QPDatabase_MonitoringTool/"
-"QPaperTool/"
-"SyncQ_P/"
-"Monitoring-QPMgmt/"
-"DatabaseManager_QPMaster/"
-"QP-Suite/"
-"Handling_TestPaper/"
-"QPaperManager/"
-"QsnPaperUploadService/"
-"ControlQPUploader/"
-"QPBFile_FileUpload/"
-"Upload_QP/"
-"QPBData-CloudSync/"
-"QPSystemDataSync/"
-"ExamPaperUploadService/"
-"MonitoringTool-QPaperDoc/"
-"QPaperTransfer/"
-"QPAdmin-Panel/"
-"DatabaseManager_QPDatabase/"
-"BulkUpload-QPUploader/"
-"ProcessingQPHandler/"
-"QPCloud_Control/"
-"BatchUploadQPaper/"
-"Q_P_DataOps/"
-"QPBData-Panel/"
-"Ops-QPWorkflow/"
-"ProcessingSuiteQPFile/"
-"QPService-HandlingModule/"
-"QPProcessing-BatchUpload/"
-"QPControl_Module/"
-"AutomationSystem-QPB/"
-"AccessControlTestPaper/"
-"UploadQPHandler/"
-"BatchUploadExamPaper/"
-"Workflow_QPManager/"
-"QPUploadMonitoringTool/"
-"QPMonitorUploadService/"
-"Portal_QPMaster/"
-"QPBFileSuite/"
-"AdminQPWorkflow/"
-"Platform-Q_P/"
-"AutomationQPBatch/"
-"QPBPortal/"
-"QPService-MassUpload/"
-"QPMasterUploader/"
-"QPMassUpload/"
-"QPBFile-Transfer/"
-"Workflow_QPBData/"
-"QPBData_ProcessingSystem/"
-"QPManagerTool/"
-"DataSyncQPBFile/"
-"QPPanel/"
-"QPaper_AccessControl/"
-"QPaperDoc-Panel/"
-"DataSync-QstnPaper/"
-"TestPaperProcessingSuite/"
-"BatchUpload-QPBFile/"
-"System_QPHandler/"
-"ProcessingSystem_QPBFile/"
-"QPUploaderMonitoring/"
-"Q_P_MonitoringTool/"
-"QPFile_CloudSync/"
-"QPBData_Upload/"
-"QPMonitor-AutomationSystem/"
-"HandlingModuleQPMaster/"
-"AccessControl_QPProcessing/"
-"QPMonitor_Tool/"
-"Suite-QPB/"
-"FileProcessorQPUpload/"
-"Q_P-Module/"
-"QPBatch-FileUpload/"
-"QPUploader_Ops/"
-"QsnPaper-Module/"
-"ProcessingSystem_QPFile/"
-"ProcessingSystemQPB/"
-"QPFileBatchProcessor/"
-"ProcessingSystemTestPaper/"
-"QPB_Suite/"
-"QPProcessing-Automation/"
-"FileProcessor-QPBData/"
-"QPProcessing_DataSync/"
-"QPService_ProcessingSystem/"
-"QPAdmin_Portal/"
-"TestPaper-DataUpload/"
-"Suite-ExamPaper/"
-"Platform_QPaperDoc/"
-"Processing-QPBulk/"
-"QPHandler-Processing/"
-"Automation_QPBatch/"
-"QPAdmin_AutomationSystem/"
-"DataOpsQPControl/"
-"QPMonitor-FileProcessor/"
-"UploadService_QPB/"
-"QPaperMgmt/"
-"Q_P_Service/"
-"AutomationQPHandler/"
-"DataOpsQPDatabase/"
-"QPMgmt-Service/"
-"QPMgmtDatabaseManager/"
-"QPBulk_BatchUpload/"
-"QPCloud_Service/"
-"HandlerQPBData/"
-"QPHandlerTool/"
-"Manager_QsnPaper/"
-"QPaperDoc-System/"
-"HandlingModule-QPMgmt/"
-"QPaperDoc-Manager/"
-"AutomationSystemQPCloud/"
-"ExamPaperDashboard/"
-"QPMonitor-CloudSync/"
-"ProcessingSuiteQPHandler/"
-"DataPipeline-QPB/"
-"QPMgmtFileUpload/"
-"AutomationSystem_QPaper/"
-"FileProcessorQPProcessing/"
-"QPService-Manager/"
-"QstnPaper-Dashboard/"
-"Ops_QPControl/"
-"QPBatch_Uploader/"
-"FileProcessor_QPSystem/"
-"QPProcessing-FileProcessor/"
-"CloudSync_QPManager/"
-"QPBatch-ProcessingSuite/"
-"QPUploader_Service/"
-"QPFilePlatform/"
-"QPMgmt-DatabaseManager/"
-"DataProcessingQPProcessing/"
-"QPBulkDataOps/"
-"DataOps_QPService/"
-"Module_TestPaper/"
-"QuestionPaper_HandlingModule/"
-"QPHandler_CloudSync/"
-"BatchProcessor_ExamPaper/"
-"Automation-QPFile/"
-"AutomationSystemExamPaper/"
-"QPaper-Dashboard/"
-"QPWorkflow_System/"
-"QPControl_AccessControl/"
-"DatabaseManager-QPMonitor/"
-"QPSystemManagement/"
-"QPaper-DataOps/"
-"UploadQPUpload/"
-
-)
-
-# Iterate over the payload list and execute curl requests
-for payload in "${payload_list[@]}"; do
-		echo -n "Payload [$payload]: "
-		code=$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}$payload" -H "User-Agent: Mozilla/5.0")
-		payload=$(printf "╭$(printf '%.0s─' $(seq "$((${termwidth} - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}$payload' -H 'User-Agent: Mozilla/5.0'\n${end}╰$(printf '%.0s─' $(seq "$((`tput cols` - 2))"))╯\n")
-		print
-	done
-
+	echo -n "Payload [QP02_12_2023%2008_53_31.zip ]:"
+	code=$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}',' Length : '"%{size_download}\n" "${target}QP02_12_2023%2008_53_31.zip" -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36")
+	payload=$(printf "╭$(printf '%.0s─' $(seq "$((${termwidth} - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}QP02_12_2023%%%%2008_53_31.zip' -H 'User-Agent: Mozilla/5.0'\n${end}╰$(printf '%.0s─' $(seq "$((`tput cols` - 2))"))╯\n")
+	print
+  echo -n "Payload [QP02_12_2023%2008_53_32.zip ]:"
+	code=$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}',' Length : '"%{size_download}\n" "${target}QP02_12_2023%2008_53_32.zip" -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36")
+	payload=$(printf "╭$(printf '%.0s─' $(seq "$((${termwidth} - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}QP02_12_2023%%%%2008_53_32.zip' -H 'User-Agent: Mozilla/5.0'\n${end}╰$(printf '%.0s─' $(seq "$((`tput cols` - 2))"))╯\n")
+	print
+  echo -n "Payload [QP02_12_2023%2008_53_33.zip ]:"
+	code=$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}',' Length : '"%{size_download}\n" "${target}QP02_12_2023%2008_53_33.zip" -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36")
+	payload=$(printf "╭$(printf '%.0s─' $(seq "$((${termwidth} - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}QP02_12_2023%%%%2008_53_33.zip' -H 'User-Agent: Mozilla/5.0'\n${end}╰$(printf '%.0s─' $(seq "$((`tput cols` - 2))"))╯\n")
+	print
  
+echo -n "Payload["QPBulkUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBulkupload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBulkUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPUploader_Mgmt/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPUploader_Mgmt/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPUploader_Mgmt/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Upload_QstnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Upload_QstnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Upload_QstnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["UploadServiceQPAdmin/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"UploadServiceQPAdmin/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"UploadServiceQPAdmin/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QP-Workflow/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QP-Workflow/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QP-Workflow/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPUpload-FileProcessor/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPUpload-FileProcessor/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPUpload-FileProcessor/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Admin_QPDatabase/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Admin_QPDatabase/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Admin_QPDatabase/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPControl-Dashboard/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPControl-Dashboard/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPControl-Dashboard/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataProcessingQPBulk/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataProcessingQPBulk/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataProcessingQPBulk/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Portal_QPManager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Portal_QPManager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Portal_QPManager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPWorkflow_AccessControl/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPWorkflow_AccessControl/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPWorkflow_AccessControl/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BulkUploadQPDatabase/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BulkUploadQPDatabase/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BulkUploadQPDatabase/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QP-Automation/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QP-Automation/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QP-Automation/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QsnPaperModule/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QsnPaperModule/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QsnPaperModule/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["AdminQPaperDoc/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"AdminQPaperDoc/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"AdminQPaperDoc/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ManagerQP/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ManagerQP/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ManagerQP/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Sync_QPWorkflow/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Sync_QPWorkflow/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Sync_QPWorkflow/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Handler_Q_P/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Handler_Q_P/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Handler_Q_P/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPHandler_Handling/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPHandler_Handling/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPHandler_Handling/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPAuto-DataOps/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPAuto-DataOps/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPAuto-DataOps/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BulkUpload-QPDatabase/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BulkUpload-QPDatabase/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BulkUpload-QPDatabase/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBulk-Upload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBulk-Upload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBulk-Upload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["SystemQPHandler/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"SystemQPHandler/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"SystemQPHandler/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["UploadService-QPBData/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"UploadService-QPBData/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"UploadService-QPBData/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["TestPaper-AutoUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"TestPaper-AutoUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"TestPaper-AutoUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataUpload-QuestionPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataUpload-QuestionPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataUpload-QuestionPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["FileUpload-QPBData/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"FileUpload-QPBData/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"FileUpload-QPBData/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMgmt-DataPipeline/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMgmt-DataPipeline/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMgmt-DataPipeline/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["MonitoringTool-TestPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"MonitoringTool-TestPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"MonitoringTool-TestPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["AccessControl_QPControl/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"AccessControl_QPControl/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"AccessControl_QPControl/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["AccessControl_QPaperDoc/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"AccessControl_QPaperDoc/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"AccessControl_QPaperDoc/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QsnPaperBatchProcessor/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QsnPaperBatchProcessor/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QsnPaperBatchProcessor/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Automation-QuestionPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Automation-QuestionPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Automation-QuestionPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataOps-QPManager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataOps-QPManager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataOps-QPManager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Workflow_QPDatabase/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Workflow_QPDatabase/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Workflow_QPDatabase/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QP-Tool/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QP-Tool/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QP-Tool/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["CloudSync_QPFile/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"CloudSync_QPFile/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"CloudSync_QPFile/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QP_DataOps/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QP_DataOps/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QP_DataOps/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["HandlingQPCloud/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"HandlingQPCloud/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"HandlingQPCloud/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Panel-QsnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Panel-QsnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Panel-QsnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["HandlingModuleQPBulk/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"HandlingModuleQPBulk/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"HandlingModuleQPBulk/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Transfer-QPFile/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Transfer-QPFile/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Transfer-QPFile/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["AutoUploadQPUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"AutoUploadQPUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"AutoUploadQPUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPSystem_AutomationSystem/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPSystem_AutomationSystem/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPSystem_AutomationSystem/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QsnPaperBatchUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QsnPaperBatchUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QsnPaperBatchUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPAdmin-Ops/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPAdmin-Ops/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPAdmin-Ops/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QuestionPaper-DataUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QuestionPaper-DataUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QuestionPaper-DataUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BulkUpload_QPaperDoc/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BulkUpload_QPaperDoc/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BulkUpload_QPaperDoc/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPAutoManagement/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPAutoManagement/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPAutoManagement/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["AutomationQPAdmin/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"AutomationQPAdmin/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"AutomationQPAdmin/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["HandlerQuestionPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"HandlerQuestionPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"HandlerQuestionPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPaperDoc-Handler/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPaperDoc-Handler/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPaperDoc-Handler/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBFile_AccessControl/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBFile_AccessControl/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBFile_AccessControl/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BatchUpload-QPProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BatchUpload-QPProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BatchUpload-QPProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["MonitoringTool_QPBatch/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"MonitoringTool_QPBatch/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"MonitoringTool_QPBatch/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPUploaderControl/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPUploaderControl/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPUploaderControl/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["AccessControl_QP/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"AccessControl_QP/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"AccessControl_QP/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Manager_QPB/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Manager_QPB/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Manager_QPB/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BatchProcessor_QPService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BatchProcessor_QPService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BatchProcessor_QPService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["AutomationSystem_QP/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"AutomationSystem_QP/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"AutomationSystem_QP/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QstnPaper-System/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QstnPaper-System/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QstnPaper-System/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Service-QPWorkflow/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Service-QPWorkflow/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Service-QPWorkflow/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPFile-Tool/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPFile-Tool/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPFile-Tool/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Platform_QPBulk/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Platform_QPBulk/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Platform_QPBulk/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPManager_Control/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPManager_Control/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPManager_Control/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["TestPaper-DataProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"TestPaper-DataProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"TestPaper-DataProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPAdmin_MonitoringTool/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPAdmin_MonitoringTool/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPAdmin_MonitoringTool/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBData_Sync/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBData_Sync/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBData_Sync/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BulkUpload-QPService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BulkUpload-QPService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BulkUpload-QPService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Processing_QPBatch/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Processing_QPBatch/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Processing_QPBatch/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BulkUploadQPB/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BulkUploadQPB/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BulkUploadQPB/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["MgmtQsnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"MgmtQsnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"MgmtQsnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBFileTransfer/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBFileTransfer/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBFileTransfer/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBData_Transfer/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBData_Transfer/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBData_Transfer/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPCloud_DataSync/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPCloud_DataSync/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPCloud_DataSync/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Handling_QPUploader/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Handling_QPUploader/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Handling_QPUploader/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPDatabasePlatform/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPDatabasePlatform/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPDatabasePlatform/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Dashboard-QPDatabase/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Dashboard-QPDatabase/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Dashboard-QPDatabase/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["AccessControl-QPControl/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"AccessControl-QPControl/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"AccessControl-QPControl/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BatchProcessor_QuestionPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BatchProcessor_QuestionPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BatchProcessor_QuestionPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataPipeline-ExamPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataPipeline-ExamPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataPipeline-ExamPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBData-DataOps/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBData-DataOps/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBData-DataOps/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["SuiteQPHandler/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"SuiteQPHandler/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"SuiteQPHandler/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QstnPaper_AutomationSystem/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QstnPaper_AutomationSystem/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QstnPaper_AutomationSystem/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QstnPaper-DataProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QstnPaper-DataProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QstnPaper-DataProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DashboardQPFile/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DashboardQPFile/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DashboardQPFile/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ExamPaper-DataSync/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ExamPaper-DataSync/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ExamPaper-DataSync/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPCloudHandler/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPCloudHandler/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPCloudHandler/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPProcessingDataUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPProcessingDataUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPProcessingDataUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPWorkflow-ProcessingSystem/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPWorkflow-ProcessingSystem/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPWorkflow-ProcessingSystem/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPProcessing_System/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPProcessing_System/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPProcessing_System/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPaperDashboard/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPaperDashboard/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPaperDashboard/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPWorkflow_Tool/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPWorkflow_Tool/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPWorkflow_Tool/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["FileUpload_QuestionPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"FileUpload_QuestionPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"FileUpload_QuestionPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPCloud-Transfer/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPCloud-Transfer/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPCloud-Transfer/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Upload_Q_P/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Upload_Q_P/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Upload_Q_P/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["HandlingModule_ExamPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"HandlingModule_ExamPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"HandlingModule_ExamPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Management-QPUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Management-QPUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Management-QPUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMonitor-ProcessingSystem/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMonitor-ProcessingSystem/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMonitor-ProcessingSystem/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Monitoring_QPBFile/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Monitoring_QPBFile/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Monitoring_QPBFile/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["UploadServiceQPB/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"UploadServiceQPB/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"UploadServiceQPB/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ExamPaperMgmt/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ExamPaperMgmt/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ExamPaperMgmt/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Mgmt_ExamPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Mgmt_ExamPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Mgmt_ExamPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataUploadQuestionPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataUploadQuestionPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataUploadQuestionPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ServiceTestPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ServiceTestPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ServiceTestPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["UploadService-QPManager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"UploadService-QPManager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"UploadService-QPManager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BatchUploadQPAdmin/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BatchUploadQPAdmin/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BatchUploadQPAdmin/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Transfer_QPUploader/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Transfer_QPUploader/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Transfer_QPUploader/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Handler-QPMgmt/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Handler-QPMgmt/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Handler-QPMgmt/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPUpload-MonitoringTool/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPUpload-MonitoringTool/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPUpload-MonitoringTool/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ProcessingSystem-QPManager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ProcessingSystem-QPManager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ProcessingSystem-QPManager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Transfer-QPService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Transfer-QPService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Transfer-QPService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPaper_Uploader/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPaper_Uploader/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPaper_Uploader/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Dashboard_QPBulk/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Dashboard_QPBulk/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Dashboard_QPBulk/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPWorkflow_MassUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPWorkflow_MassUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPWorkflow_MassUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ExamPaper-Automation/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ExamPaper-Automation/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ExamPaper-Automation/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMaster_Module/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMaster_Module/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMaster_Module/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QP_DataProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QP_DataProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QP_DataProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["MonitoringTool_QPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"MonitoringTool_QPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"MonitoringTool_QPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QuestionPaperAccessControl/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QuestionPaperAccessControl/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QuestionPaperAccessControl/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Portal_QPUploader/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Portal_QPUploader/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Portal_QPUploader/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPControl-Processing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPControl-Processing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPControl-Processing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Panel-QstnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Panel-QstnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Panel-QstnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["FileProcessor_ExamPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"FileProcessor_ExamPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"FileProcessor_ExamPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["PlatformQ_P/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"PlatformQ_P/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"PlatformQ_P/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["FileUploadQPManager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"FileUploadQPManager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"FileUploadQPManager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPAdmin-UploadService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPAdmin-UploadService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPAdmin-UploadService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPUploader_Suite/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPUploader_Suite/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPUploader_Suite/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMonitorAdmin/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMonitorAdmin/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMonitorAdmin/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Uploader_QPManager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Uploader_QPManager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Uploader_QPManager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataProcessing-QPService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataProcessing-QPService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataProcessing-QPService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPaperDoc-FileProcessor/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPaperDoc-FileProcessor/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPaperDoc-FileProcessor/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPAdmin-Automation/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPAdmin-Automation/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPAdmin-Automation/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["PanelQsnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"PanelQsnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"PanelQsnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPUploadCloudSync/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPUploadCloudSync/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPUploadCloudSync/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataPipeline_QPDatabase/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataPipeline_QPDatabase/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataPipeline_QPDatabase/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBulk-Processing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBulk-Processing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBulk-Processing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["MgmtQPCloud/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"MgmtQPCloud/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"MgmtQPCloud/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMgmt_AccessControl/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMgmt_AccessControl/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMgmt_AccessControl/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Sync_QPMgmt/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Sync_QPMgmt/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Sync_QPMgmt/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DashboardQPDatabase/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DashboardQPDatabase/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DashboardQPDatabase/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPaperDoc_DataProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPaperDoc_DataProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPaperDoc_DataProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMonitorBatchUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMonitorBatchUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMonitorBatchUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BatchProcessor_QPUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BatchProcessor_QPUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BatchProcessor_QPUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Tool-QPUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Tool-QPUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Tool-QPUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["MassUpload-QPMaster/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"MassUpload-QPMaster/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"MassUpload-QPMaster/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["UploadServiceQPMgmt/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"UploadServiceQPMgmt/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"UploadServiceQPMgmt/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Monitoring-QPUploader/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Monitoring-QPUploader/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Monitoring-QPUploader/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["UploaderQsnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"UploaderQsnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"UploaderQsnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPAdmin-Dashboard/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPAdmin-Dashboard/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPAdmin-Dashboard/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBatch_ProcessingSystem/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBatch_ProcessingSystem/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBatch_ProcessingSystem/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPControlHandler/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPControlHandler/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPControlHandler/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBulk_Admin/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBulk_Admin/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBulk_Admin/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ModuleTestPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ModuleTestPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ModuleTestPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["HandlingModule_QPProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"HandlingModule_QPProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"HandlingModule_QPProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Automation_ExamPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Automation_ExamPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Automation_ExamPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPManager_ProcessingSystem/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPManager_ProcessingSystem/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPManager_ProcessingSystem/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMasterManagement/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMasterManagement/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMasterManagement/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QP-MonitoringTool/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QP-MonitoringTool/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QP-MonitoringTool/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBulkHandler/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBulkHandler/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBulkHandler/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPProcessing-DataUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPProcessing-DataUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPProcessing-DataUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataOps-QsnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataOps-QsnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataOps-QsnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["TestPaperMonitoring/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"TestPaperMonitoring/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"TestPaperMonitoring/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPB_AutomationSystem/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPB_AutomationSystem/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPB_AutomationSystem/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Suite-QPService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Suite-QPService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Suite-QPService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBFile_UploadService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBFile_UploadService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBFile_UploadService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BatchUploadQPAuto/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BatchUploadQPAuto/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BatchUploadQPAuto/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPManager_Ops/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPManager_Ops/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPManager_Ops/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ProcessingSystemQPMaster/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ProcessingSystemQPMaster/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ProcessingSystemQPMaster/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QP-Handling/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QP-Handling/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QP-Handling/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["OpsQPService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"OpsQPService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"OpsQPService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataPipeline_ExamPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataPipeline_ExamPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataPipeline_ExamPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPService-AutomationSystem/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPService-AutomationSystem/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPService-AutomationSystem/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BatchUpload_QPMgmt/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BatchUpload_QPMgmt/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BatchUpload_QPMgmt/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ServiceQsnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ServiceQsnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ServiceQsnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["TestPaper-Panel/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"TestPaper-Panel/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"TestPaper-Panel/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataProcessing-QPControl/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataProcessing-QPControl/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataProcessing-QPControl/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBData-Upload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBData-Upload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBData-Upload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPUploader_Transfer/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPUploader_Transfer/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPUploader_Transfer/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BulkUpload_QPUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BulkUpload_QPUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BulkUpload_QPUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Upload_QPHandler/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Upload_QPHandler/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Upload_QPHandler/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Module_QPMonitor/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Module_QPMonitor/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Module_QPMonitor/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ProcessingSystem-QPProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ProcessingSystem-QPProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ProcessingSystem-QPProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Q_PBatchUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Q_PBatchUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Q_PBatchUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ExamPaper-MassUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ExamPaper-MassUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ExamPaper-MassUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPAutoPanel/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPAutoPanel/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPAutoPanel/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMgmt_ProcessingSystem/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMgmt_ProcessingSystem/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMgmt_ProcessingSystem/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPFileService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPFileService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPFileService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPManager_Handling/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPManager_Handling/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPManager_Handling/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Tool_QPUploader/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Tool_QPUploader/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Tool_QPUploader/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BatchUpload_QPCloud/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BatchUpload_QPCloud/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BatchUpload_QPCloud/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPaper-DataUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPaper-DataUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPaper-DataUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Manager_QPBFile/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Manager_QPBFile/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Manager_QPBFile/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QP_DatabaseManager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QP_DatabaseManager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QP_DatabaseManager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPFile_Upload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPFile_Upload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPFile_Upload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPB_DataProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPB_DataProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPB_DataProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["ProcessingSuite_QuestionPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"ProcessingSuite_QuestionPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"ProcessingSuite_QuestionPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["TestPaper-Workflow/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"TestPaper-Workflow/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"TestPaper-Workflow/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QsnPaper_DataUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QsnPaper_DataUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QsnPaper_DataUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["TestPaperModule/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"TestPaperModule/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"TestPaperModule/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPWorkflow_DataPipeline/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPWorkflow_DataPipeline/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPWorkflow_DataPipeline/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMgmt-DataUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMgmt-DataUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMgmt-DataUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Suite_QPFile/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Suite_QPFile/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Suite_QPFile/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPB_DataUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPB_DataUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPB_DataUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMaster-Manager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMaster-Manager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMaster-Manager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPAutoMassUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPAutoMassUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPAutoMassUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Automation-QstnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Automation-QstnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Automation-QstnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Upload_QPBulk/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Upload_QPBulk/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Upload_QPBulk/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["TestPaper_UploadService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"TestPaper_UploadService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"TestPaper_UploadService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPHandler_Management/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPHandler_Management/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPHandler_Management/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPService_FileProcessor/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPService_FileProcessor/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPService_FileProcessor/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["AutomationExamPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"AutomationExamPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"AutomationExamPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataProcessingQuestionPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataProcessingQuestionPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataProcessingQuestionPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["MonitoringTool_QPCloud/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"MonitoringTool_QPCloud/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"MonitoringTool_QPCloud/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPWorkflowUploadService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPWorkflowUploadService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPWorkflowUploadService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["UploadService_QPManager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"UploadService_QPManager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"UploadService_QPManager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DashboardQPHandler/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DashboardQPHandler/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DashboardQPHandler/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["FileUpload_QPWorkflow/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"FileUpload_QPWorkflow/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"FileUpload_QPWorkflow/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DashboardQPaperDoc/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DashboardQPaperDoc/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DashboardQPaperDoc/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPB-Platform/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPB-Platform/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPB-Platform/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPControlWorkflow/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPControlWorkflow/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPControlWorkflow/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["FileUpload-QP/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"FileUpload-QP/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"FileUpload-QP/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataPipelineQPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataPipelineQPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataPipelineQPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["WorkflowQPFile/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"WorkflowQPFile/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"WorkflowQPFile/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBatch-Monitoring/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBatch-Monitoring/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBatch-Monitoring/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["HandlingModuleQ_P/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"HandlingModuleQ_P/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"HandlingModuleQ_P/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPManagement/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPManagement/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPManagement/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPProcessing-System/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPProcessing-System/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPProcessing-System/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Handling_QPHandler/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Handling_QPHandler/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Handling_QPHandler/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPFile_DataSync/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPFile_DataSync/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPFile_DataSync/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPFileDataProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPFileDataProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPFileDataProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Transfer-QPBulk/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Transfer-QPBulk/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Transfer-QPBulk/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Mgmt_QPManager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Mgmt_QPManager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Mgmt_QPManager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BatchUploadQstnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BatchUploadQstnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BatchUploadQstnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPAuto-Ops/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPAuto-Ops/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPAuto-Ops/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPB-Mgmt/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPB-Mgmt/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPB-Mgmt/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Q_PProcessingSuite/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Q_PProcessingSuite/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Q_PProcessingSuite/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["AccessControl-QPMonitor/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"AccessControl-QPMonitor/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"AccessControl-QPMonitor/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Sync-QPUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Sync-QPUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Sync-QPUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["TestPaper_FileUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"TestPaper_FileUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"TestPaper_FileUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Admin_QPFile/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Admin_QPFile/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Admin_QPFile/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMgmtProcessingSuite/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMgmtProcessingSuite/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMgmtProcessingSuite/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPWorkflowSuite/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPWorkflowSuite/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPWorkflowSuite/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Platform-QPFile/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Platform-QPFile/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Platform-QPFile/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataSync-QPMaster/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataSync-QPMaster/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataSync-QPMaster/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Q_PDataProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Q_PDataProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Q_PDataProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Mgmt-QstnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Mgmt-QstnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Mgmt-QstnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BatchUpload-QPBatch/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BatchUpload-QPBatch/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BatchUpload-QPBatch/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPB_BulkUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPB_BulkUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPB_BulkUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBFile_Handling/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBFile_Handling/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBFile_Handling/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BatchUploadQPBData/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BatchUploadQPBData/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BatchUploadQPBData/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBData_Platform/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBData_Platform/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBData_Platform/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPUploaderFileProcessor/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPUploaderFileProcessor/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPUploaderFileProcessor/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QuestionPaperDataProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QuestionPaperDataProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QuestionPaperDataProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["UploadServiceExamPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"UploadServiceExamPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"UploadServiceExamPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["TransferQPFile/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"TransferQPFile/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"TransferQPFile/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPWorkflow_DataOps/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPWorkflow_DataOps/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPWorkflow_DataOps/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPProcessing_Portal/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPProcessing_Portal/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPProcessing_Portal/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["TestPaper-DatabaseManager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"TestPaper-DatabaseManager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"TestPaper-DatabaseManager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Handler_QPB/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Handler_QPB/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Handler_QPB/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Uploader-QPUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Uploader-QPUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Uploader-QPUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["UploadService-QPProcessing/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"UploadService-QPProcessing/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"UploadService-QPProcessing/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Handler_QPBData/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Handler_QPBData/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Handler_QPBData/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Admin_QPMonitor/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Admin_QPMonitor/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Admin_QPMonitor/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QstnPaperAutomation/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QstnPaperAutomation/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QstnPaperAutomation/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["BulkUpload-TestPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"BulkUpload-TestPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"BulkUpload-TestPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Upload_QPService/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Upload_QPService/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Upload_QPService/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Suite-TestPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Suite-TestPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Suite-TestPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataOps_QPAuto/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataOps_QPAuto/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataOps_QPAuto/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPB_Panel/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPB_Panel/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPB_Panel/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QuestionPaper_FileUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QuestionPaper_FileUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QuestionPaper_FileUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPMonitor_Handler/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPMonitor_Handler/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPMonitor_Handler/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["DataSync-QPUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"DataSync-QPUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"DataSync-QPUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Dashboard-QPBatch/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Dashboard-QPBatch/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Dashboard-QPBatch/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPProcessingHandler/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPProcessingHandler/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPProcessingHandler/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Sync_QPAdmin/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Sync_QPAdmin/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Sync_QPAdmin/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QP-Panel/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QP-Panel/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QP-Panel/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["AccessControlQsnPaper/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"AccessControlQsnPaper/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"AccessControlQsnPaper/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPSuite/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPSuite/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPSuite/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["PlatformQPSystem/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"PlatformQPSystem/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"PlatformQPSystem/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPProcessing_FileProcessor/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPProcessing_FileProcessor/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPProcessing_FileProcessor/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Upload_QPAuto/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Upload_QPAuto/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Upload_QPAuto/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPManagerBulkUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPManagerBulkUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPManagerBulkUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBulkAutomationSystem/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBulkAutomationSystem/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBulkAutomationSystem/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPaperDocAutoUpload/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPaperDocAutoUpload/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPaperDocAutoUpload/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPBatch-Sync/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPBatch-Sync/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPBatch-Sync/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["TestPaper_DatabaseManager/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"TestPaper_DatabaseManager/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"TestPaper_DatabaseManager/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["QPManager_Portal/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"QPManager_Portal/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"QPManager_Portal/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+echo -n "Payload["Sync-QP/"]: "
+code=\$(curl -k -s -o /dev/null -i -w 'Status: ''%{http_code}', Length: '%{size_download}\n' "${target}"Sync-QP/"" -H "User-Agent: Mozilla/5.0")
+payload=\$(printf "╭\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╮\n${cyan} ╰─> PAYLOAD${end} : ${green}curl -k -s '${target}"Sync-QP/"' -H 'User-Agent: Mozilla/5.0'\n${end}╰\$(printf '%.0s─' \$(seq "\$((termwidth - 2))"))╯\n")
+print
+
+
 }
 function 403bypass(){ 
 	URL_Encode_Bypass
